@@ -61,7 +61,7 @@ jobs:
             .pio/build/**/*.hex
             .pio/build/**/*.uf2
 
-       - name: Add FW hex files to Community Folder
+      - name: Add FW hex files to Community Folder
          run: cp -r .pio/build/**/*.hex CustomDevices_own/Gagagu/Community/boards
 
       - name: Add FW uf2 files to Community Folder
