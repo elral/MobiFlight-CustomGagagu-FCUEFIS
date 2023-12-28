@@ -61,6 +61,15 @@ jobs:
             .pio/build/**/*.hex
             .pio/build/**/*.uf2
 
+       - name: Add FW hex files to Community Folder
+         run: cp -r .pio/build/**/*.hex CustomDevices_own/Gagagu/Community/firmware
+
+      - name: Add FW uf2 files to Community Folder
+         run: cp -r .pio/build/**/*.uf2 CustomDevices_own/Gagagu/Community/firmware
+
+      - name: Add Community Folder to Assets
+         run: cp -r CustomDevices_own/Gagagu/Community $GITHUB_WORKSPACE
+
       - name: Release
         uses: softprops/action-gh-release@v1
         env:
@@ -69,6 +78,4 @@ jobs:
           files: |
             .pio/build/**/*.hex
             .pio/build/**/*.uf2
-            .CustomDevices/*.json
-            .CustomDevices/*.mfmc
-            .CustomDevices/*.mcc
+            .CustomDevices_own/Gagagu/Community
