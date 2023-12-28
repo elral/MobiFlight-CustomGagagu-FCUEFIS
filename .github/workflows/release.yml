@@ -62,13 +62,13 @@ jobs:
             .pio/build/**/*.uf2
 
       - name: Add FW hex files to Community Folder
-         run: cp -r .pio/build/**/*.hex CustomDevices_own/Gagagu/Community/boards
+        run: cp -r .pio/build/**/*.hex CustomDevices_own/Gagagu/Community/boards
 
       - name: Add FW uf2 files to Community Folder
-         run: cp -r .pio/build/**/*.uf2 CustomDevices_own/Gagagu/Community/boards
+        run: cp -r .pio/build/**/*.uf2 CustomDevices_own/Gagagu/Community/boards
 
       - name: Add Community Folder to Assets
-         run: cp -r CustomDevices_own/Gagagu/Community $GITHUB_WORKSPACE
+        run: cp -r CustomDevices_own/Gagagu/Community $GITHUB_WORKSPACE
 
       - name: Release
         uses: softprops/action-gh-release@v1
