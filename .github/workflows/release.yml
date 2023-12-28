@@ -61,7 +61,7 @@ jobs:
       - name: zip community folder
         run: |
           cd CustomDevices_own
-          zip -r -qq Community.zip Community
+          zip -r -qq Community_${{ github.event.release.tag_name }}.zip Community
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -69,6 +69,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           files: |
-            .pio/build/**/*.hex
-            .pio/build/**/*.uf2
             CustomDevices_own/Community*.zip
