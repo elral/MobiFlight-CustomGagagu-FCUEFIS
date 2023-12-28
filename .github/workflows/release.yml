@@ -60,8 +60,7 @@ jobs:
         run: cp -r .pio/build/**/*.uf2 CustomDevices_own/Community/Gagagu/boards
 
       - name: zip community folder
-        run: zip -r -qq Community.zip . -i Community
-        working-directory: CustomDevices_own
+        run: zip -r -qq Community.zip CustomDevices_own/Community
 
       - name: Release
         uses: softprops/action-gh-release@v1
