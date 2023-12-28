@@ -42,12 +42,12 @@ jobs:
         id: get_version
         uses: battila7/get-version-action@v2
 
-      - name: Run PlatformIO
+      - name: Run PlatformIO for Mega
         env:
           VERSION: ${{ steps.get_version.outputs.version-without-v }}
         run: pio run -e mobiflight_mega
 
-      - name: Run PlatformIO
+      - name: Run PlatformIO for All
         env:
           VERSION: ${{ steps.get_version.outputs.version-without-v }}
         run: pio run
