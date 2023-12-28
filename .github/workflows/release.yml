@@ -60,7 +60,7 @@ jobs:
         run: cp -r .pio/build/**/*.uf2 CustomDevices_own/Community/Gagagu/boards
 
       - name: zip community folder
-        run: zip -r -q Community.zip Community
+        run: zip -r -qq Community.zip . -i Community
         working-directory: CustomDevices_own
 
       - name: Release
