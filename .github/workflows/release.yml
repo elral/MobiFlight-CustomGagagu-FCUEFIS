@@ -70,4 +70,4 @@ jobs:
           files: |
             .pio/build/**/*.hex
             .pio/build/**/*.uf2
-            CustomDevices_own/Community*.zip
+            Community*.zip
