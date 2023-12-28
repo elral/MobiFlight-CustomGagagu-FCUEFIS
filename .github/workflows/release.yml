@@ -68,7 +68,7 @@ jobs:
         run: cp -r .pio/build/**/*.uf2 CustomDevices_own/Gagagu/Community/Gagagu/boards
 
       - name: Add Community Folder to Assets
-        run: cp -r CustomDevices_own/Gagagu/Community/Gagagu $GITHUB_WORKSPACE
+        run: cp -r CustomDevices_own/Gagagu/Community/* $GITHUB_WORKSPACE
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -78,4 +78,4 @@ jobs:
           files: |
             .pio/build/**/*.hex
             .pio/build/**/*.uf2
-            CustomDevices_own/Gagagu/Community/Gagagu/*
+            CustomDevices_own/Gagagu/Community/*
