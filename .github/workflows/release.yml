@@ -53,14 +53,15 @@ jobs:
           VERSION: ${{ steps.get_version.outputs.version-without-v }}
         run: pio run
 
-      - name: Add FW hex files to Community Folder
-        run: cp -r .pio/build/**/*.hex CustomDevices_own/Community/Gagagu/boards
-
-      - name: Add FW uf2 files to Community Folder
-        run: cp -r .pio/build/**/*.uf2 CustomDevices_own/Community/Gagagu/boards
+      - name: Add FW files to Community Folder
+        run: |
+          cp -r .pio/build/**/*.hex CustomDevices_own/Community/Gagagu/boards
+          cp -r .pio/build/**/*.uf2 CustomDevices_own/Community/Gagagu/boards
 
       - name: zip community folder
-        run: zip -r -qq Community.zip CustomDevices_own/Community
+        run: |
+          cd CustomDevices_own
+          zip -r -qq Community.zip Community
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -70,4 +71,4 @@ jobs:
           files: |
             .pio/build/**/*.hex
             .pio/build/**/*.uf2
-            Community*.zip
+            CustomDevices_own/Community*.zip
