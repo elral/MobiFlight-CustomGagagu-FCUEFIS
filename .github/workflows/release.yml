@@ -53,14 +53,6 @@ jobs:
           VERSION: ${{ steps.get_version.outputs.version-without-v }}
         run: pio run
 
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: firmware
-          path: |
-            .pio/build/**/*.hex
-            .pio/build/**/*.uf2
-
       - name: Add FW hex files to Community Folder
         run: cp -r .pio/build/**/*.hex CustomDevices_own/Community/Gagagu/boards
 
@@ -69,6 +61,13 @@ jobs:
 
       - name: zip community folder
         run: zip -r -q Community.zip CustomDevices_own/Community
+
+      - name: Install zip
+        uses: montudor/action-zip@v1
+
+      - name: Zip output
+        run: zip -qq -r Community.zip Community
+        working-directory: CustomDevices_own/Community
 
       - name: Release
         uses: softprops/action-gh-release@v1
