@@ -59,8 +59,8 @@ jobs:
 
       - name: Print Versions
         run: |
-          echo VERSION
-          echo CORE_VERSION
+          echo $VERSION
+          echo $CORE_VERSION
 
       - name: Run PlatformIO
         run: pio run
