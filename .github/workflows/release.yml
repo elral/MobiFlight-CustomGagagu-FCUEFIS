@@ -54,7 +54,7 @@ jobs:
           git remote add other_repo https://github.com/MobiFlight/MobiFlight-FirmwareSource
           git fetch other_repo --tags
           git describe --tags --abbrev=0 other_repo/main
-          echo "CORE_VERSION='$(git describe --tags --abbrev=0 other_repo/main)'" >> $GITHUB_ENV
+          echo "CORE_VERSION=$(git describe --tags --abbrev=0 other_repo/main)" >> $GITHUB_ENV
 
       - name: Run PlatformIO
         env:
