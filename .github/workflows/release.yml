@@ -58,7 +58,7 @@ jobs:
       - name: Run PlatformIO
         env:
           VERSION: ${{ steps.get_version.outputs.version-without-v }}
-          CORE_VERSION: ${{ git describe --tags --abbrev=0 other_repo/main }}
+          CORE_VERSION: 2.5.0
         run: |
           echo $VERSION
           echo $CORE_VERSION
