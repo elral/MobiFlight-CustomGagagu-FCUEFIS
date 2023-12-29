@@ -42,6 +42,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: MobiFlight/MobiFlight-CustomDevices
+          ref: '0.2.0'
           path: CustomDevices
 
       - name: Extract build version
@@ -53,13 +54,10 @@ jobs:
           VERSION: ${{ steps.get_version.outputs.version-without-v }}
         run: pio run
 
-      - name: Add FW files to Community Folder
+      - name: Add FW files to Community Folder and zip
         run: |
           cp -r .pio/build/gagagu_fcu_efis_mega/*.hex CustomDevices_own/Community/Gagagu/boards
           cp -r .pio/build/gagagu_fcu_efis_raspberrypico/*.uf2 CustomDevices_own/Community/Gagagu/boards
-
-      - name: zip community folder
-        run: |
           cd CustomDevices_own/Community
           zip -r -qq Community_${{ github.event.release.tag_name }}.zip Gagagu
 
