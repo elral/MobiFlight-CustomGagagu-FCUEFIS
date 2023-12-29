@@ -53,16 +53,13 @@ jobs:
         run: |
           git remote add other_repo https://github.com/MobiFlight/MobiFlight-FirmwareSource
           git fetch other_repo --tags
-          git describe --tags --abbrev=0 other_repo/main
           echo "CORE_VERSION=$(git describe --tags --abbrev=0 other_repo/main)" >> $GITHUB_ENV
 
       - name: Run PlatformIO
         env:
           VERSION: ${{ steps.get_version.outputs.version-without-v }}
           CORE_VERSION: ${{ env.CORE_VERSION }}
-        run: |
-          echo $VERSION
-          echo $CORE_VERSION
+        run:
           pio run
 
       - name: Add FW files to Community Folder and zip
