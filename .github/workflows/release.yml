@@ -49,7 +49,7 @@ jobs:
         id: get_version
         uses: battila7/get-version-action@v2
 
-      - name: Get versions
+      - name: Get Core version
         run: |
           git remote add other_repo https://github.com/MobiFlight/MobiFlight-FirmwareSource
           git fetch other_repo --tags
@@ -58,6 +58,7 @@ jobs:
       - name: Run PlatformIO
         env:
           VERSION: ${{ steps.get_version.outputs.version-without-v }}
+          CORE_VERSION: echo | git describe --tags --abbrev=0 other_repo/main
         run: |
           echo $VERSION
           echo $CORE_VERSION
