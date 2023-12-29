@@ -66,9 +66,8 @@ jobs:
           pio run
 
       - name: Add FW files to Community Folder and zip
-        env: |
+        env:
           VERSION: ${{ steps.get_version.outputs.version-without-v }}
-          CORE_VERSION: echo | git describe --tags --abbrev=0 other_repo/main
         run: |
           chmod +x ./copy_fw_files.sh
           ./copy_fw_files.sh
