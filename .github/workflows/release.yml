@@ -51,7 +51,7 @@ jobs:
 
       - name: Run PlatformIO
         env:
-          VERSION: ${{ steps.get_version.outputs.version-without-v }}
+          export VERSION: ${{ steps.get_version.outputs.version-without-v }}
         run: pio run
 
       - name: Add FW files to Community Folder and zip
