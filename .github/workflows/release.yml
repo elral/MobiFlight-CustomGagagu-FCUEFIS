@@ -55,13 +55,13 @@ jobs:
 
       - name: Add FW files to Community Folder
         run: |
-          cp -r .pio/build/**/*.hex CustomDevices_own/Community/Gagagu/boards
-          cp -r .pio/build/**/*.uf2 CustomDevices_own/Community/Gagagu/boards
+          cp -r .pio/build/gagagu_fcu_efis_mega/*.hex CustomDevices_own/Community/Gagagu/boards
+          cp -r .pio/build/gagagu_fcu_efis_raspberrypico/*.uf2 CustomDevices_own/Community/Gagagu/boards
 
       - name: zip community folder
         run: |
-          cd CustomDevices_own
-          zip -r -qq Community_${{ github.event.release.tag_name }}.zip Community
+          cd CustomDevices_own/Community
+          zip -r -qq Community_${{ github.event.release.tag_name }}.zip Gagagu
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -69,4 +69,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           files: |
-            CustomDevices_own/Community*.zip
+            CustomDevices_own/Community/Community*.zip
