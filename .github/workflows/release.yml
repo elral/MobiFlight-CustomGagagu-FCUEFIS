@@ -49,9 +49,20 @@ jobs:
         id: get_version
         uses: battila7/get-version-action@v2
 
-      - name: Run PlatformIO
+      - name: Get versions
+        run: |
+          git remote add other_repo https://github.com/MobiFlight/MobiFlight-FirmwareSource
+          git fetch other_repo --tags
         env:
-          export VERSION: ${{ steps.get_version.outputs.version-without-v }}
+          VERSION: ${{ steps.get_version.outputs.version-without-v }}
+          CORE_VERSION: git describe --tags --abbrev=0 other_repo/main
+
+      - name: Print Versions
+        run: |
+          echo VERSION
+          echo CORE_VERSION
+
+      - name: Run PlatformIO
         run: pio run
 
       - name: Add FW files to Community Folder and zip
