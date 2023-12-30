@@ -1,7 +1,7 @@
 #! /bin/bash
 
-my_custom_path=CustomDevices_own/Gagau
-my_custom_name=gagagu_fcu_efis
+my_custom_path='CustomDevices_own/Gagau'
+my_custom_name='gagagu_fcu_efis'
 
 mkdir $my_custom_path/Community/firmware
 cp -r .pio/build/**/*.hex $my_custom_path/Community/firmware
