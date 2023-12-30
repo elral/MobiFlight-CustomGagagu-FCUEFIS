@@ -1,7 +1,10 @@
 #! /bin/bash
 
-mkdir CustomDevices_own/Gagagu/Community/firmware
-cp -r .pio/build/gagagu_fcu_efis_mega/*.hex CustomDevices_own/Gagagu/Community/firmware
-cp -r .pio/build/gagagu_fcu_efis_raspberrypico/*.uf2 CustomDevices_own/Gagagu/Community/firmware
-cd CustomDevices_own/Gagagu/Community
-zip -r -qq gagagu_fcu_efis_$VERSION.zip *
+my_custom_path=CustomDevices_own/Gagau
+my_custom_name=gagagu_fcu_efis
+
+mkdir $my_custom_path/Community/firmware
+cp -r .pio/build/**/*.hex $my_custom_path/Community/firmware
+cp -r .pio/build/**/*.uf2 $my_custom_path/Community/firmware
+cd $my_custom_path/Community
+zip -r -qq $my_custom_name_$VERSION.zip *
