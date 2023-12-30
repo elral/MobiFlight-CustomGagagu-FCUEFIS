@@ -38,13 +38,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install --upgrade platformio
 
-      - name: Checkout custom devices
-        uses: actions/checkout@v3
-        with:
-          repository: MobiFlight/MobiFlight-CustomDevices
-          ref: '0.2.0'
-          path: CustomDevices
-
       - name: Extract build version
         id: get_version
         uses: battila7/get-version-action@v2
@@ -59,7 +52,8 @@ jobs:
         env:
           VERSION: ${{ steps.get_version.outputs.version-without-v }}
           CORE_VERSION: ${{ env.CORE_VERSION }}
-        run:
+        run: |
+          pio run -e mobiflight_mega
           pio run
 
       - name: Add FW files to Community Folder and zip
