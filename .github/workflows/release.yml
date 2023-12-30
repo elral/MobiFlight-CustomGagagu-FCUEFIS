@@ -44,8 +44,8 @@ jobs:
 
       - name: Get Core version
         run: |
-          git remote add other_repo https://github.com/MobiFlight/MobiFlight-FirmwareSource
-          git fetch other_repo --tags
+          git remote add other_repo https://github.com/MobiFlight/MobiFlight-FirmwareSource > /dev/null
+          git fetch other_repo --tags > /dev/null
           echo "CORE_VERSION=$(git describe --tags --abbrev=0 other_repo/main)" >> $GITHUB_ENV
 
       - name: Run PlatformIO
