@@ -3,34 +3,21 @@ import os
 import subprocess
 import shutil
 
-
+dirname = "CustomDevices_own/Gagagu/Community"
 # Get the version number from the build environment.
 firmware_version = os.environ.get('VERSION', "")
 
-#dirname = os.environ['HOME'] + "CustomDevices_own/Gagagu/Community/firmware"
-dirname = "CustomDevices_own/Gagagu/Community/firmware"
-os.mkdir(dirname)
+def copy_fw_files (source, target, env):
+    print(f'Creating folder')
+    os.mkdir("CustomDevices_own/Gagagu/Community" + "/firmware")
+    print(f'Copy files')
+    shutil.copy(str(target[0]), "CustomDevices_own/Gagagu/Community" + "/firmware")
+    pass
 
-#source = os.environ['HOME'] + ".pio/build/**/*.hex"
-source = ".pio/build/gagagu_fcu_efis_mega/*.hex"
-#target = os.environ['HOME'] + "CustomDevices_own/Gagagu/Community/firmware"
-target = "CustomDevices_own/Gagagu/Community/firmware"
-shutil.copy(source, target)
+def create_zip_folder (source, target, env):
+    os.chdir(dirname)
+    #subprocess.run(["zip", "-r -qq gagau_fcu_efis_" + firmware_version + ".zip *"])
+    print(f'Creating ZIP file')
+    pass
 
-#source = os.environ['HOME'] + ".pio/build/**/*.uf2"
-source = ".pio/build/gagagu_fcu_efis_raspberrypico/*.uf2"
-shutil.copy(source, target)
-
-os.chdir("CustomDevices_own/Gagagu/Community")
-
-subprocess.run(["zip", "-r -qq gagau_fcu_efis_" + "firmware_version" + ".zip *"])
-
-
-
-
-
-# mkdir $custom_device_path/Community/firmware
-# cp -r .pio/build/**/*.hex $custom_device_path/Community/firmware
-# cp -r .pio/build/**/*.uf2 $custom_device_path/Community/firmware
-# cd "$custom_device_path"/Community
-# zip -r -qq "$zip_file_name"_"$VERSION".zip *
+env.AddPostAction("$BUILD_DIR/${PROGNAME}.hex", [copy_fw_files, create_zip_folder])
