@@ -1,7 +1,7 @@
 #! /bin/bash
 
 custom_device_path='CustomDevices_own/Gagagu'
-zip_file_name='gagagu_fcu_efis'
+zip_file_name=gagagu_fcu_efis
 
 mkdir $custom_device_path/Community/firmware
 cp -r .pio/build/**/*.hex $custom_device_path/Community/firmware
