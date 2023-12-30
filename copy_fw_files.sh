@@ -1,6 +1,6 @@
 #! /bin/bash
 
-custom_device_path='/CustomDevices_own/Gagau'
+custom_device_path='CustomDevices_own/Gagau'
 zip_file_name='gagagu_fcu_efis'
 
 mkdir /CustomDevices_own/Gagau/Community/firmware
