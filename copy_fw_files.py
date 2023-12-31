@@ -1,6 +1,5 @@
 Import("env")
 import os
-#import subprocess
 import shutil
 
 dirname = "CustomDevices_own/Gagagu/Community"
@@ -20,10 +19,6 @@ def copy_fw_files (source, target, env):
     shutil.copy(fw_file_name, dirname + "/firmware")
     pass
 
-#def create_zip_folder (source, target, env):
-#    os.chdir(dirname)
-#    subprocess.run(["zip", "-r -qq gagau_fcu_efis_" + firmware_version + ".zip *"])
-#    pass
 
 
 env.AddPostAction("$BUILD_DIR/${PROGNAME}.hex", copy_fw_files)

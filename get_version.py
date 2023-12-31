@@ -13,7 +13,7 @@ if firmware_version == "":
 if core_version == "":
   # When no version is specified default to "0.0.1" for
   # compatibility with MobiFlight desktop app version checks.
-  core_version = "2.4.1"
+  core_version = "0.0.1"
 
 # Strip any leading "v" that might be on the version and
 # any leading or trailing periods.
