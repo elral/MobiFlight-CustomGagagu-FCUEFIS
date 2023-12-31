@@ -60,8 +60,8 @@ jobs:
         env:
           VERSION: ${{ steps.get_version.outputs.version-without-v }}
         run: |
-          chmod +x ./copy_fw_files.sh
-          ./copy_fw_files.sh
+          chmod +x ./create_zip_file.sh
+          ./create_zip_file.sh
         shell: bash
 
       - name: Release

@@ -1,6 +1,6 @@
 Import("env")
 import os
-import subprocess
+#import subprocess
 import shutil
 
 dirname = "CustomDevices_own/Gagagu/Community"
@@ -8,16 +8,16 @@ dirname = "CustomDevices_own/Gagagu/Community"
 firmware_version = os.environ.get('VERSION', "")
 
 def copy_fw_files (source, target, env):
-    print(f'Creating folder')
-    os.mkdir("CustomDevices_own/Gagagu/Community" + "/firmware")
-    print(f'Copy files')
-    shutil.copy(str(target[0]), "CustomDevices_own/Gagagu/Community" + "/firmware")
+    if os.path.exists(dirname + "/firmware") == False:
+        os.mkdir(dirname + "/firmware")
+    
+    shutil.copy(str(target[0]), dirname + "/firmware")
     pass
 
-def create_zip_folder (source, target, env):
-    os.chdir(dirname)
-    #subprocess.run(["zip", "-r -qq gagau_fcu_efis_" + firmware_version + ".zip *"])
-    print(f'Creating ZIP file')
-    pass
+#def create_zip_folder (source, target, env):
+#    os.chdir(dirname)
+#    subprocess.run(["zip", "-r -qq gagau_fcu_efis_" + firmware_version + ".zip *"])
+#    pass
 
-env.AddPostAction("$BUILD_DIR/${PROGNAME}.hex", [copy_fw_files, create_zip_folder])
+env.AddPostAction("$BUILD_DIR/${PROGNAME}.hex", copy_fw_files)
+env.AddPostAction("$BUILD_DIR/${PROGNAME}.uf2", copy_fw_files)
