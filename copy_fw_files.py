@@ -20,4 +20,4 @@ def copy_fw_files (source, target, env):
 #    pass
 
 env.AddPostAction("$BUILD_DIR/${PROGNAME}.hex", copy_fw_files)
-env.AddPostAction("$BUILD_DIR/${PROGNAME}.uf2", copy_fw_files)
+env.AddPostAction("$BUILD_DIR/${PROGNAME}.bin", copy_fw_files)
