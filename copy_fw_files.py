@@ -10,7 +10,6 @@ firmware_version = os.environ.get('VERSION', "")
 
 def copy_fw_files (source, target, env):
     fw_file_name=str(target[0])
-    print("Endung ist: " + fw_file_name[-3:])
 
     if os.path.exists(custom_device_path + "/firmware") == False:
         os.mkdir(custom_device_path + "/firmware")
