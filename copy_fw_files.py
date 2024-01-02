@@ -26,12 +26,12 @@ def copy_fw_files (source, target, env):
         fw_file_name=fw_file_name[0:-3] + "uf2"
 
     shutil.copy(fw_file_name, custom_device_path + "/Community/firmware")
-    createZIP(fw_file_name)
+    createZIP()
 
 
-def createZIP(filename,compress = zipfile.ZIP_DEFLATED):
+def createZIP():
     complete_ZIP_Filename = custom_device_path + '/' + zip_file_name + '_' + firmware_version + '.zip'
-    with zipfile.ZipFile(complete_ZIP_Filename, 'w', compress) as target:
+    with zipfile.ZipFile(complete_ZIP_Filename, 'w', zipfile.ZIP_DEFLATED) as target:
         for root, dirs, files in os.walk(custom_device_path + "/Community"):
             for file in files:
                 add = os.path.join(root, file)

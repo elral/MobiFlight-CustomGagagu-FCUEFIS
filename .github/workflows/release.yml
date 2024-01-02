@@ -56,18 +56,10 @@ jobs:
           pio run -e mobiflight_mega
           pio run
 
-      - name: Add FW files to Community Folder and zip
-        env:
-          VERSION: ${{ steps.get_version.outputs.version-without-v }}
-        run: |
-          chmod +x ./create_zip_file.sh
-          ./create_zip_file.sh
-        shell: bash
-
       - name: Release
         uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           files: |
-            CustomDevices_own/**/**/*.zip
+            CustomDevices_own/**/*.zip
